@@ -7,6 +7,11 @@ import contactRoutes from "./contacts";
 import { apiKeyValidator } from "@/middlewares/api-key-validator";
 
 const router = Router();
+
+router.get("/status", (req, res) => {
+  res.json({ message: "API is working" });
+});
+
 router.use("/sessions", sessionRoutes);
 router.use("/:sessionId/chats", apiKeyValidator, chatRoutes);
 router.use("/:sessionId/contacts", apiKeyValidator, contactRoutes);
