@@ -88,6 +88,14 @@ LOG_LEVEL="warn"
 1. You can then start the app using the `dev` for development and `start` script for production
 
 ```sh
+En Prisma, el comando equivalente es npx prisma migrate reset. Este comando eliminará todas las tablas y volverá a aplicar todas las migraciones.
+
+Aquí tienes cómo usarlo:
+
+bash
+Copiar código
+npx prisma migrate reset
+
 # Development
 npm run dev
 
@@ -117,35 +125,4 @@ The API Documentation can fork **Postman Collection** in your workspace Postman
 
 
 
-
-# PhoneNumberRule.php
-
-## Description
-The `PhoneNumberRule` class is a custom validation rule in Laravel that validates phone numbers based on the country code provided. It checks if the phone number matches the specific pattern defined for each country.
-
-## Usage
-To use the `PhoneNumberRule`, create an instance of the class and pass the country code as a parameter to the constructor. Then, you can use this rule in your validation logic to validate phone numbers.
-
-```php
-use App\Rules\PhoneNumberRule;
-
-$rules = [
-    'phone_number' => ['required', new PhoneNumberRule('country_code')],
-];
-
-// Implement your validation logic using the PhoneNumberRule
-```
-
-## Parameters
-- `$countryCode`: The country code for which the phone number validation will be applied.
-
-## Return Values
-The `validate` method does not return any value but uses a closure function to handle validation failures.
-
-## Additional Notes
-- The `validate` method takes three parameters: `$attribute` (the name of the attribute being validated), `$value` (the value of the attribute), and `$fail` (a closure function to handle validation failures).
-- The class contains an array of patterns for different countries along with their respective regular expressions for validating phone numbers.
-- It removes any leading plus sign from both the provided country code and phone number before performing validation.
-- If the provided country code is not found in the predefined patterns, it fails with a message indicating that the country code is invalid.
-- If the phone number does not match the pattern for the specified country, it fails with a message stating that the phone number is not valid for the selected country.
 This project is intended for learning purpose only, don't use it for spamming or any activities that's prohibited by **WhatsApp**
